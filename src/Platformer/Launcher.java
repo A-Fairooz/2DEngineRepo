@@ -12,6 +12,7 @@ public class Launcher extends BaseLauncher {
 	public Launcher(PApplet p) {
 		super(p);
 		StartGame();
+		
 	}
 
 	public void keyPressed(char key, int keyCode) {
@@ -45,6 +46,7 @@ public class Launcher extends BaseLauncher {
 		//levelEditor.exitScreensAdd(startScreen);
 		//gameLevel.exitScreensAdd(startScreen);
 	
+		
 		this.gameManager.StartAll();
 	
 	}
@@ -53,6 +55,7 @@ public class Launcher extends BaseLauncher {
 	
 	public void UpdateAll() {
 		super.UpdateAll();
+		
 	
 	}
 }
