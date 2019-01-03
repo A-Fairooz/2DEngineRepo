@@ -1,61 +1,49 @@
 package Platformer;
-
+import GameComponents.Sprite;
+import GameComponents.GameManager;
+import Platformer.Player;
 import processing.core.PApplet;
-import GameComponents.*;
-import java.util.ArrayList;
+import GameComponents.BaseLauncher;
 
-public class Launcher extends BaseLauncher {
+
+public class Launcher extends BaseLauncher{
+	//public PApplet parent; // The parent PApplet that we will render ourselves onto
 	
-	
-	public boolean started = false;
-	int waiting = 0;
+	public Player player;
 	public Launcher(PApplet p) {
 		super(p);
 		StartGame();
 		
 	}
 
+	@Override
 	public void keyPressed(char key, int keyCode) {
-		super.keyPressed(key, keyCode);
-		//activeScreen.keyPressed(key, keyCode);
+		player.keyPressed(key, keyCode);
+
 	}
 
+	@Override
 	public void keyReleased(char key, int keyCode) {
-		super.keyReleased(key, keyCode);
-		//activeScreen.keyReleased(key, keyCode);
-
+		// TODO Auto-generated method stub
+		player.keyReleased(key, keyCode);
 	}
+	
+	@Override
 	public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-		super.mouseClicked(mouseX,mouseY,mouseButton);
-		//activeScreen.mouseClicked(mouseX,mouseY,mouseButton);
-		
-		
-		
-		
 		
 	}
-	
+		// TODO Auto-generated method stub
+	@Override
 	public void StartGame() {
-		//StartScreen startScreen = new StartScreen(parent, this.gameManager);
-		//GameLevel gameLevel = new GameLevel(parent, this.gameManager);
-		//LevelEditor levelEditor = new LevelEditor(parent, this.gameManager);
-		//activeScreen = startScreen;
-		started = true;	
-		//startScreen.exitScreensAdd(gameLevel);		
-		//startScreen.exitScreensAdd(levelEditor);
-		//levelEditor.exitScreensAdd(startScreen);
-		//gameLevel.exitScreensAdd(startScreen);
-	
+
+		parent.println(parent.width + ", " + parent.height);
+		player = new Player(parent, parent.width/2,  parent.height/2, 20, 20);
+		parent.println(player.transform.position.x+ ", " + player.transform.position.y);
 		
-		this.gameManager.StartAll();
-	
+		gameManager.addObject(player);
+		gameManager.addPlayerGameObjects(player);
+		player.start();
 	}
-	
-	
-	
-	public void UpdateAll() {
-		super.UpdateAll();
-		
-	
-	}
+
+
 }

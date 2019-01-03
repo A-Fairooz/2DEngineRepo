@@ -1,31 +1,20 @@
 package GameComponents;
 import processing.core.PApplet;
 
-public abstract class  BaseLauncher{
+public abstract class  BaseLauncher implements KeyInput{
+	
 	public PApplet parent;
+	public GameManager gameManager;
+	
 	
 	public BaseLauncher(PApplet p) {
 		parent = p;
 		gameManager = new GameManager(parent);
 	}
 	
-	public GameManager gameManager;
 	public abstract void StartGame();
 	
 	public void UpdateAll() {
 		gameManager.UpdateAll();
-	}
-	
-	public void keyPressed(char key, int keyCode) {
-    	gameManager.keyPressed(key, keyCode);
-    }
-    
-    public void keyReleased(char key, int keyCode) {
-    	gameManager.keyReleased(key, keyCode);
-    }    
-  
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-    	gameManager.mouseClicked(mouseX, mouseY, mouseButton);
-    	}
-    
+	}	
 }
